@@ -188,14 +188,38 @@ bool save_json_results					= false;
 auto last_activity						= std::chrono::high_resolution_clock::now();
 
 
-///crear un process_video
 
-void process_video(DarkHelp::NN & nn, const std::string & stem) //what is "stem" supposed to mean?
+
+void process_video(DarkHelp::NN & nn, const std::string & stem)
 {
     const auto now = std::chrono::high_resolution_clock::now();
     last_activity = now;
     std::string file_name = stem + ".mp4";
+
+    //file_name = "/media/hugo/lentuchon/Documentos/modular/pruebaDarkHelpServer/input2/venado7.mp4";
+
+    ///debug OpenCV build
+    //std::cout << "OpenCV version: " << cv::getBuildInformation().c_str() << std::endl;
+
+//    try
+//    {
+//        cv::VideoCapture cap(file_name);
+//    }catch (cv::Exception &ex)
+//    {
+//        std::cout << "exeption open " << ex.what() << std::endl;
+//    }
+
     cv::VideoCapture cap(file_name);
+
+//    try
+//    {
+//        cap.open(file_name);
+//    }catch (cv::Exception &ex)
+//    {
+//        std::cout << "exeption open " << ex.what() << std::endl;
+//    }
+
+    //cv::VideoCapture cap = new cv::VideoCapture(file_name);
 
     if (!cap.isOpened())
     {
@@ -213,7 +237,8 @@ void process_video(DarkHelp::NN & nn, const std::string & stem) //what is "stem"
 //        cv::VideoWriter video_writer(output_file_name, codec, fps, cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH),cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
     }
 
-    int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D');
+//    int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D');
+    int codec = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
     double fps = cap.get(cv::CAP_PROP_FPS);
     std::string output_file_name(stem);
     output_file_name = output_file_name + "_annotated.mp4";
@@ -224,22 +249,29 @@ void process_video(DarkHelp::NN & nn, const std::string & stem) //what is "stem"
     {
         bool is_empty=true;
         cv::Mat frame;
-        cap>>frame; //grab frame
+        try
+        {
+            cap>>frame; //grab frame //I doesn't throw any exceptions even if video capture failed to open.
+        }catch (cv::Exception &ex)
+        {
+            std::cout << "exeption >> " << ex.what() << std::endl;
+        }
+//        cap>>frame; //grab frame
 
         if(frame.empty()){
             break;
         }
 
-        //Action: predict annotation for this frame.
-        //setear is_empty correctamente
+        //predict annotation for this frame.
         const auto results = nn.predict(frame);
         if (results.empty())
         {
-            is_empty=true;
+            is_empty=true; //means there are no objects in the image
         }
 
         if (save_annotated_video)
         {
+            //create
             if (save_empty_frames == false and is_empty == true) // don't write frame
             {
                 continue;
@@ -248,18 +280,17 @@ void process_video(DarkHelp::NN & nn, const std::string & stem) //what is "stem"
                 cv::Mat annotated_frame = nn.annotate();
                 if (save_annotated_video_as_frames)         //write frame as image
                 {
-                    //action: imwrite annotated_frame
                     std::string frame_file_name = stem;
                     frame_file_name = frame_file_name + "_ann_" + std::to_string(i) + ".jpg";
-                    cv::imwrite(frame_file_name, annotated_frame, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY, 90});
+                    cv::imwrite(frame_file_name, annotated_frame, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY, 80});
+
                 }else                                       //write frame to video
                 {
                     video_writer.write(annotated_frame);
-                    //action: videowrite annotated_frame
-
+                    //cv::imshow("frame", annotated_frame);
                 }
 
-                //action: imwrite cropped objects -> name+frame_number.
+                //todo imwrite cropped objects -> name+frame_number.
 
                 if (save_json_results){
                     //action: save frame annotations in json
@@ -507,13 +538,8 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
 		cv::Mat mat;
 		std::string dst_stem;
 		std::string video_filename;
-
-		///crear un if name contains mp4
-		//buscar si podemos usar nn. algo para procesar el video completo
-		//la otra es dentro del mismo if procesar todo el video cuadro por cuadro
-		// rompemos el video en cuadros y vamos uno por uno procesando y guardando en un nuevo video, con opencv
-		//      para procesar se usa process_image(nn, mat, dst_stem);
-		// checamos una bandera para ver si solo guardamos en el nuevo video los cuadros con detecciones o tambien los emptys
+        std::string video_filename_input_stem;
+        std::string video_filename_input;
 
 		if (use_camera_for_input)
 		{
@@ -538,28 +564,32 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
 			if (dir_iter != std::filesystem::directory_iterator())
 			{
 				const auto & entry = *dir_iter;
-
 				auto src = entry.path();
-
-                //std::cout << src.filename().extension() <<std::endl;
-
-               // else{
-
 				std::cout << "-> [" << total_number_of_images_processed << "] " << src.string() << std::endl;
+                video_filename = src.string();
+//                video_filename_input_stem = src.stem();
+                video_filename_input = (input_dir/src.stem()).string();
 				const auto dst = output_dir / src.filename();
 				dst_stem = (output_dir / src.stem()).string();
 				mat = cv::imread(src.string());
 
-				std::filesystem::rename(src, dst);
-				dir_iter ++;  //}
+//				std::filesystem::rename(src, dst);
+//				dir_iter ++;  //}
                 if(src.filename().extension() == ".mp4") //we could add other extensions
                 {
-                    video_filename = src.filename();
+                    //video_filename = src.filename();
                     std::cout << video_filename << std::endl;
 //                    dst_stem = (output_dir / src.filename()).string();
                     dst_stem = (output_dir / src.stem()).string();
                     mat = cv::Mat::zeros(1, 49, CV_64FC1);
                 }
+                else
+                {
+                    std::filesystem::rename(src, dst);
+//                    dir_iter ++;  //}
+                }
+
+                dir_iter ++;  //}
                 std::cout << "enviando: " << dst_stem << std::endl;
 			}
 		}
@@ -570,15 +600,20 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
 		    ///if dst_stem contiene .mp4 corremos process_Video(nn, dst_stem)
 		    //else {
 		    std::cout << "LLegando:" <<dst_stem << std::endl;
-            if (dst_stem.std::string::find("mp4") != std::string::npos)
+            if (video_filename.std::string::find("mp4") != std::string::npos)
             {
                 std::cout << "encontrado .mp4, correr process_video" << std::endl;
-                process_video(nn, dst_stem);
+                std::cout << "video_filename: " << video_filename << std::endl;
+                process_video(nn, video_filename_input);
+            }else{
+                process_image(nn, mat, dst_stem);// } fin else
+                images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)}
             }
 
 
-			process_image(nn, mat, dst_stem);// } fin else
-			images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)
+
+//			process_image(nn, mat, dst_stem);// } fin else
+//			images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)
 		}
 
 		if ((mat.empty() and images_processed > 0) or
