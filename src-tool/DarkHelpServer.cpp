@@ -190,11 +190,13 @@ auto last_activity						= std::chrono::high_resolution_clock::now();
 
 
 
-void process_video(DarkHelp::NN & nn, const std::string & stem)
+void process_video(DarkHelp::NN & nn, const std::string & stem, const std::string & output_stem)
 {
     const auto now = std::chrono::high_resolution_clock::now();
     last_activity = now;
     std::string file_name = stem + ".mp4";
+    std::string output_filename = output_stem + "_annotated.mp4";
+
 
     //file_name = "/media/hugo/lentuchon/Documentos/modular/pruebaDarkHelpServer/input2/venado7.mp4";
 
@@ -240,9 +242,9 @@ void process_video(DarkHelp::NN & nn, const std::string & stem)
 //    int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D');
     int codec = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
     double fps = cap.get(cv::CAP_PROP_FPS);
-    std::string output_file_name(stem);
-    output_file_name = output_file_name + "_annotated.mp4";
-    cv::VideoWriter video_writer(output_file_name, codec, fps, cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH),cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
+//    std::string output_file_name(stem);
+//    output_file_name = output_file_name + "_annotated.mp4";
+    cv::VideoWriter video_writer(output_filename, codec, fps, cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH),cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
 
     //for each frame
     for (int i = 0; i < cap.get(cv::CAP_PROP_FRAME_COUNT); ++i)
@@ -281,7 +283,7 @@ void process_video(DarkHelp::NN & nn, const std::string & stem)
                 if (save_annotated_video_as_frames)         //write frame as image
                 {
                     std::string frame_file_name = stem;
-                    frame_file_name = frame_file_name + "_ann_" + std::to_string(i) + ".jpg";
+                    frame_file_name = frame_file_name + "_annotated_" + std::to_string(i) + ".jpg";
                     cv::imwrite(frame_file_name, annotated_frame, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY, 80});
 
                 }else                                       //write frame to video
@@ -307,11 +309,16 @@ void process_video(DarkHelp::NN & nn, const std::string & stem)
     cap.release();
     video_writer.release();
 
+    std::filesystem::remove(file_name);
+
+
 //    save_annotated_video = false; // writes annotated video as mp4, checks "save_empty_frames"
 //    save_annotated_video_as_frames = false; // writes annotated video as individual frames, checks "save_empty_frames"
 //    save_empty_frames= true; //  if true select whole annotated video, if false only its non empty frames
 
     const auto epoch		= now.time_since_epoch();
+    const auto now2 = std::chrono::high_resolution_clock::now();
+    last_activity = now2;
 
     return;
 }
@@ -604,7 +611,7 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
             {
                 std::cout << "encontrado .mp4, correr process_video" << std::endl;
                 std::cout << "video_filename: " << video_filename << std::endl;
-                process_video(nn, video_filename_input);
+                process_video(nn, video_filename_input, dst_stem);
             }else{
                 process_image(nn, mat, dst_stem);// } fin else
                 images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)}
