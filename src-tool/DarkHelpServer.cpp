@@ -55,7 +55,7 @@ nlohmann::json create_darkhelp_defaults()
 	j["darkhelp"]["server"]["settings"]["save_annotated_image"						] = false;
     j["darkhelp"]["server"]["settings"]["save_annotated_video"						] = false; // writes annotated video as mp4, checks "save_empty_frames"
     j["darkhelp"]["server"]["settings"]["save_annotated_video_as_frames"			] = false; // writes annotated video as individual frames, checks "save_empty_frames"
-    j["darkhelp"]["server"]["settings"]["save_empty_frames"					    	] = true; //  if true select whole annotated video, if false only its non empty frames
+    j["darkhelp"]["server"]["settings"]["save_empty_frames"					    	] = true; //  if true select/write whole annotated video, if false only its non empty frames
 	j["darkhelp"]["server"]["settings"]["save_txt_annotations"						] = false;
 	j["darkhelp"]["server"]["settings"]["save_json_results"							] = true;
 	j["darkhelp"]["server"]["settings"]["crop_and_save_detected_objects"			] = false;
@@ -188,40 +188,17 @@ bool save_json_results					= false;
 auto last_activity						= std::chrono::high_resolution_clock::now();
 
 
-
-
 void process_video(DarkHelp::NN & nn, const std::string & stem, const std::string & output_stem)
 {
-    const auto now = std::chrono::high_resolution_clock::now();
-    last_activity = now;
+//    save_annotated_video = true; // writes annotated video as mp4, checks "save_empty_frames"
+//    save_annotated_video_as_frames = true; // writes annotated video as individual frames, checks "save_empty_frames"
+//    save_empty_frames= true; //  if true select whole annotated video, if false only its non empty frames
+
+    const auto now3 = std::chrono::high_resolution_clock::now();
+    last_activity = now3;
     std::string file_name = stem + ".mp4";
     std::string output_filename = output_stem + "_annotated.mp4";
-
-
-    //file_name = "/media/hugo/lentuchon/Documentos/modular/pruebaDarkHelpServer/input2/venado7.mp4";
-
-    ///debug OpenCV build
-    //std::cout << "OpenCV version: " << cv::getBuildInformation().c_str() << std::endl;
-
-//    try
-//    {
-//        cv::VideoCapture cap(file_name);
-//    }catch (cv::Exception &ex)
-//    {
-//        std::cout << "exeption open " << ex.what() << std::endl;
-//    }
-
     cv::VideoCapture cap(file_name);
-
-//    try
-//    {
-//        cap.open(file_name);
-//    }catch (cv::Exception &ex)
-//    {
-//        std::cout << "exeption open " << ex.what() << std::endl;
-//    }
-
-    //cv::VideoCapture cap = new cv::VideoCapture(file_name);
 
     if (!cap.isOpened())
     {
@@ -229,36 +206,28 @@ void process_video(DarkHelp::NN & nn, const std::string & stem, const std::strin
         return;
     }
 
-    if (save_annotated_video_as_frames == false)
-    {
-        //create vide writer obbject
-//        int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D');
-//        double fps = cap.get(cv::CAP_PROP_FPS);
-//        std::string output_file_name(stem);
-//        output_file_name = output_file_name + "_annotated.mp4";
-//        cv::VideoWriter video_writer(output_file_name, codec, fps, cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH),cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
-    }
-
-//    int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D');
     int codec = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
     double fps = cap.get(cv::CAP_PROP_FPS);
-//    std::string output_file_name(stem);
-//    output_file_name = output_file_name + "_annotated.mp4";
     cv::VideoWriter video_writer(output_filename, codec, fps, cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH),cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
+
+    if (save_annotated_video_as_frames)
+    {
+        video_writer.release();
+        std::filesystem::remove(output_filename);
+    }
 
     //for each frame
     for (int i = 0; i < cap.get(cv::CAP_PROP_FRAME_COUNT); ++i)
     {
-        bool is_empty=true;
+        bool is_empty=false;
         cv::Mat frame;
         try
         {
-            cap>>frame; //grab frame //I doesn't throw any exceptions even if video capture failed to open.
+            cap>>frame;
         }catch (cv::Exception &ex)
         {
             std::cout << "exeption >> " << ex.what() << std::endl;
         }
-//        cap>>frame; //grab frame
 
         if(frame.empty()){
             break;
@@ -266,40 +235,44 @@ void process_video(DarkHelp::NN & nn, const std::string & stem, const std::strin
 
         //predict annotation for this frame.
         const auto results = nn.predict(frame);
+        ///imprimir resultados, results.empty() siempre es true?? eso parece, tal vez se checa de otra forma
         if (results.empty())
         {
             is_empty=true; //means there are no objects in the image
+
         }
 
         if (save_annotated_video)
         {
-            //create
             if (save_empty_frames == false and is_empty == true) // don't write frame
             {
-                continue;
+                //continue;
+               // std::cout << std::to_string(i)<< " = empty frame" << std::endl;
             } else
             {
                 cv::Mat annotated_frame = nn.annotate();
                 if (save_annotated_video_as_frames)         //write frame as image
                 {
-                    std::string frame_file_name = stem;
+                    std::string frame_file_name = output_stem;
                     frame_file_name = frame_file_name + "_annotated_" + std::to_string(i) + ".jpg";
-                    cv::imwrite(frame_file_name, annotated_frame, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY, 80});
+                    cv::imwrite(frame_file_name, annotated_frame, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY, 90});
+
 
                 }else                                       //write frame to video
                 {
                     video_writer.write(annotated_frame);
-                    //cv::imshow("frame", annotated_frame);
+                    //std::cout << "writing frame: " << std::to_string(i) << std::endl;
+                    //cv::imshow("frame", annotated_frame); //throws exception
                 }
 
                 //todo imwrite cropped objects -> name+frame_number.
 
                 if (save_json_results){
-                    //action: save frame annotations in json
+                    //todo: save frame annotations in json
                 }
                 if (save_txt_annotations)
                 {
-                    //action: sve frame annotations in txt
+                    //todo: sve frame annotations in txt
                 }
             }
         }
@@ -308,15 +281,14 @@ void process_video(DarkHelp::NN & nn, const std::string & stem, const std::strin
 
     cap.release();
     video_writer.release();
-
     std::filesystem::remove(file_name);
 
 
-//    save_annotated_video = false; // writes annotated video as mp4, checks "save_empty_frames"
-//    save_annotated_video_as_frames = false; // writes annotated video as individual frames, checks "save_empty_frames"
-//    save_empty_frames= true; //  if true select whole annotated video, if false only its non empty frames
+    const auto epoch		= now3.time_since_epoch();
+    const auto seconds		= std::chrono::duration_cast<std::chrono::seconds>		(epoch).count();
 
-    const auto epoch		= now.time_since_epoch();
+    std::cout << file_name << " Processing took: " << std::to_string(seconds) << " seconds" << std::endl;
+
     const auto now2 = std::chrono::high_resolution_clock::now();
     last_activity = now2;
 
@@ -448,7 +420,7 @@ void process_image(DarkHelp::NN & nn, cv::Mat & mat, const std::string & stem)
 }
 
 
-void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
+void server(DarkHelp::NN & nn, const nlohmann::json & j)
 {
 	const auto & server_settings = j["darkhelp"]["server"]["settings"];
 
@@ -481,7 +453,7 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
 	const bool save_original_image						= server_settings["camera"]["save_original_image"	];
 
 	cv::VideoCapture cap;
-	if (use_camera_for_input) //copiar esto, ponerlo despues de dir iter, linea #386,  if name contains mp4
+	if (use_camera_for_input)
 	{
 		const auto & camera = server_settings["camera"];
 
@@ -580,8 +552,6 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
 				dst_stem = (output_dir / src.stem()).string();
 				mat = cv::imread(src.string());
 
-//				std::filesystem::rename(src, dst);
-//				dir_iter ++;  //}
                 if(src.filename().extension() == ".mp4") //we could add other extensions
                 {
                     //video_filename = src.filename();
@@ -593,34 +563,23 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j) ///aquí pasa todo
                 else
                 {
                     std::filesystem::rename(src, dst);
-//                    dir_iter ++;  //}
                 }
 
                 dir_iter ++;  //}
-                std::cout << "enviando: " << dst_stem << std::endl;
+                //std::cout << "enviando: " << dst_stem << std::endl;
 			}
 		}
 
-		if (mat.empty() == false) //aquí es donde se analizan las imagenes
+		if (mat.empty() == false)
 		{
-		    //todo ************************************************************************************************
-		    ///if dst_stem contiene .mp4 corremos process_Video(nn, dst_stem)
-		    //else {
-		    std::cout << "LLegando:" <<dst_stem << std::endl;
+
             if (video_filename.std::string::find("mp4") != std::string::npos)
             {
-                std::cout << "encontrado .mp4, correr process_video" << std::endl;
-                std::cout << "video_filename: " << video_filename << std::endl;
                 process_video(nn, video_filename_input, dst_stem);
             }else{
-                process_image(nn, mat, dst_stem);// } fin else
-                images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)}
+                process_image(nn, mat, dst_stem);
+                images_processed ++;
             }
-
-
-
-//			process_image(nn, mat, dst_stem);// } fin else
-//			images_processed ++;//  } fin else (o aqui??? que pasa? podriamos poner un videos_processed ++;)
 		}
 
 		if ((mat.empty() and images_processed > 0) or
