@@ -1,0 +1,5 @@
+/snap/clion/169/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp
+Building ver: 1.4.2-2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug

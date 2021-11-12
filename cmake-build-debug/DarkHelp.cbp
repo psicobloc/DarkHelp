@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DarkHelp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\src-lib\;CMake Files\src-tool\;CMake Files\src-doc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dh">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/libdarkhelp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 dh"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dh/fast">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/libdarkhelp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 dh/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-lib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cli">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/DarkHelp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 cli"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cli/fast">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/DarkHelp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 cli/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/DarkHelpServer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 server"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server/fast">
+				<Option output="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/DarkHelpServer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDH_VERSION=&quot;1.4.2-2&quot;"/>
+					<Add directory="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 server/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/cmake-build-debug/src-tool/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpConfig.cpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpConfig.hpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpNN.cpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpNN.hpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpPredictionResult.cpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpPredictionResult.hpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpUtils.cpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/DarkHelpUtils.hpp">
+			<Option target="dh"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-tool/DarkHelp.rc">
+			<Option target="cli"/>
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-tool/DarkHelpCli.cpp">
+			<Option target="cli"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-tool/DarkHelpServer.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CM_definitions.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CM_dependencies.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CM_package.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CM_source.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CM_version.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/../../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/../../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/../../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/../../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-lib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src-lib\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-tool/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src-tool\"/>
+		</Unit>
+		<Unit filename="/media/hugo/lentuchon/Documentos/modular/modDarkHelpHugo/DarkHelp/src-doc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src-doc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

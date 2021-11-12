@@ -562,7 +562,9 @@ void server(DarkHelp::NN & nn, const nlohmann::json & j)
                 }
                 else
                 {
-                    std::filesystem::rename(src, dst);
+                    //std::filesystem::rename(src, dst); //rename breaks when src and dst are in different drives (for me at least)
+                    std::filesystem::copy(src,dst);
+                    std::filesystem::remove(src);
                 }
 
                 dir_iter ++;  //}
